@@ -5,29 +5,7 @@ A simple document processing pipeline in Python:
 1. **Ingestion** → Read PDFs from a folder  
 2. **Processing** → Normalize + chunk text  
 3. **Storage** → Save chunks into SQLite  
-4. **Query** → Retrieve relevant chunks and pass them to an LLM (via [Ollama](https://ollama.com/))  
-
----
-
-## 📂 Project Structure
-
-pdf_pipeline/
-├── data/ # 📥 put your PDFs here
-│ ├── sample1.pdf
-│ └── sample2.pdf
-├── db/ # 📦 SQLite database (auto-created)
-├── pdf_pipeline/ # 🔧 source code
-│ ├── ingestion.py # PDF ingestion
-│ ├── processing.py # text cleaning + chunking
-│ ├── storage.py # SQLite storage
-│ ├── query.py # query interface + LLM call
-│ └── utils.py # helper functions
-├── main.py # CLI entry point
-├── requirements.txt # Python dependencies
-└── README.md # this file
-
-yaml
-Copy code
+4. **Query** → Retrieve relevant chunks and pass them to an LLM (via [Ollama](https://ollama.com/)) 
 
 ---
 
@@ -100,7 +78,7 @@ Ingested report2.pdf (20 chunks)
 3. Query the database
 bash
 Copy code
-python main.py query "What is the main conclusion of the report?"
+python main.py query "tell me his strengths"
 Example output:
 
 diff
@@ -108,20 +86,16 @@ Copy code
 ==================== Query ====================
 
 Answer:
-The report concludes that...
-🛠️ Troubleshooting
-'ollama' is not recognized → Install Ollama system-wide (see Setup step 4) and restart your terminal.
+Answer:
+ Sure! Based on the information provided, here are some potential strengths of the person you are asking about:
 
-ImportError: attempted relative import → Use absolute imports in main.py or run as a module:
+1. Strategic thinking: The person is able to think critically and strategically, as evidenced by their ability to come up with a plan to help the company grow and expand its market share.
+2. Leadership skills: The person is able to lead and motivate their team, as shown by their ability to get everyone on board with the new strategy and their willingness to listen to and incorporate others' ideas.
+3. Communication skills: The person is able to communicate effectively and persuasively, as evidenced by their ability to present their ideas clearly and concisely to the team and stakeholders.
+4. Adaptability: The person is able to adapt quickly and easily to new situations and challenges, as shown by their ability to pivot the company's strategy in response to changing market conditions.
+5. Visionary thinking: The person is able to think creatively and outside the box, as evidenced by their ability to come up with innovative solutions to complex problems.
+6. Problem-solving skills: The person is able to analyze complex problems and develop effective solutions, as shown by their ability to identify and address the challenges facing the company.
+7. Collaboration: The person is able to work effectively with others, as evidenced by their ability to build a strong team and collaborate with stakeholders to achieve common goals.
+8. Resilience: The person is able to bounce back from setbacks and maintain their motivation and focus, as shown by their ability to keep the team motivated and on track despite the challenges faced by the company.
 
-bash
-Copy code
-python -m main ingest data/
-Database not found → Run ingestion first (python main.py ingest data/).
 
-📌 Notes
-Storage uses simple keyword search (LIKE) for chunk retrieval.
-
-For better accuracy, you can extend this with embeddings + semantic search (e.g., sentence-transformers + FAISS).
-
-This project is a starting point — extend as needed for production.
