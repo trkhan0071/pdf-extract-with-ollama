@@ -1,0 +1,8 @@
+# PDF handling
+pypdf==4.3.1
+
+# SQLite helpers
+sqlite-utils==3.36
+
+# HTTP requests for Ollama API
+requests==2.32.3
